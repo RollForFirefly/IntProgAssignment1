@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Shop</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="item-container">
+    <h1>🛒One-Stop Shop </h1>
+    <h4> Selling everything from overpriced soup to dirt-cheap RAM</h4>
+
+    <div>
+      <input type="text" id="taskInput" placeholder="Search for items..." onload="displayItems()" oninput="displayItems()" />
+      <ul id="item-list">
+        <!-- display all items. later, matching search params-->
+      </ul>
+      <button class="cart-btn">Cart</button>
+    </div>
+    <ul id="taskList"></ul>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

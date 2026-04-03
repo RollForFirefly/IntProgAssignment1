@@ -24,3 +24,22 @@ with pymysql.connect(
         # commit
         connection.commit()
         print("Record insert and committed.")
+
+        create_catalogue_query = """
+        CREATE TABLE IF NOT EXISTS catalogue (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(255) NOT NULL,
+        price DECIMAL(6, 2) NOT NULL,
+        description VARCHAR(255) NOT NULL,
+        image VARCHAR(255) NOT NULL
+        )
+        """
+        cursor.execute(create_catalogue_query)
+
+        # inserting a new record
+        catalogue_insert = "INSERT INTO catalogue (name, price, description, image) VALUES (%s, %s, %s, %s)"
+        cursor.execute(catalogue_insert, ('soap', '19.99', 'It is soap.', 'BLANK'))
+        cursor.execute(catalogue_insert, ('cheese', '6.99', 'Processed cheese.', 'BLANK'))
+
+        # commit
+        connection.commit()
