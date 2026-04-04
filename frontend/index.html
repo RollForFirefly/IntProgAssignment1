@@ -7,18 +7,19 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body onload="displayItems()">
 
   <div class="item-container">
     <h1>🛒One-Stop Shop </h1>
     <h4> Selling everything from overpriced soup to dirt-cheap RAM</h4>
+    <button class="cart-btn">Cart</button>
 
     <div>
-      <input type="text" id="taskInput" placeholder="Search for items..." onload="displayItems()" oninput="displayItems()" />
+      <input type="text" id="taskInput" placeholder="Search for items..." oninput="displayItems()" />
       <ul id="item-list">
         <!-- display all items. later, matching search params-->
       </ul>
-      <button class="cart-btn">Cart</button>
+
     </div>
     <ul id="taskList"></ul>
   </div>

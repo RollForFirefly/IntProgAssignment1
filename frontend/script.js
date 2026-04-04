@@ -51,18 +51,33 @@ function updateSearch() {
     ul.appendChild(li);
 }
 
-function createItemContainer(text, img, desc) {
+function toTitleCase(str) {
+    return str.toString().charAt(0).toUpperCase() + str.toString().substring(1);
+}
+
+function createItemContainer(text, price, img, desc) {
     const li = document.createElement("li");
-    li.textContent = text;
     li.className = "item-container";
-    const div = document.createElement("div");
+
+    const h2 = document.createElement("h2");
+    h2.textContent = toTitleCase(text);
+    h2.className = "item-name";
+    li.appendChild(h2);
+
+    const h3 = document.createElement("h3");
+    h3.textContent = "$" + price;
+    li.appendChild(h3);
+
     const image = document.createElement("img");
     image.src = img;
     image.alt = "oops";
+    li.appendChild(image);
+
+    const div = document.createElement("div");
     div.textContent = desc;
     div.className = "item-desc";
-    li.appendChild(image);
     li.appendChild(div);
+
     return li;
 }
 
@@ -71,7 +86,11 @@ function displayItems() {
     const ul = document.getElementById("item-list");
     const yarg = ["cheese", "egg", "soap", "towels"]
     for (let i = 0; i < yarg.length; i++) {
-        const li = createItemContainer(yarg[i], "../images/egg.jpg", "A desc.");
+        const li = createItemContainer(yarg[i], 22.22, "../images/egg.jpg", "A desc.");
         ul.appendChild(li);
     }
+}
+
+function createAddToCart() {
+    // return a container with a count button and an add to cart button
 }
