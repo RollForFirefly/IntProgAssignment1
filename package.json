@@ -12,6 +12,7 @@
   },
   "private": true,
   "dependencies": {
+    "lucide-react": "^1.7.0",
     "mysql": "^2.18.1"
   }
 }
