@@ -1,9 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
-import { Trash2, Plus, Check, X, Edit2 } from 'lucide-react';
+import { Trash2, Plus, Check, X, Edit2, ShoppingCart } from 'lucide-react';
 import './ShopApp.css';
 
-const API_BASE_URL = 'http://localhost:5173/items';
+const API_BASE_URL = 'http://localhost:8000/items';
 const ORDER_URL = '/orders';
+
+// to boot up fastAPI, make sure you're in ./backend:   python -m uvicorn to_do_app:app --reload
+// make sure you're using venv:                         .venv\Scripts\Activate.ps1
+// and finally, boot react from ./src:                   node --run dev
 
 export default function ShopApp() {
   const [items, setItems] = useState([]);
@@ -15,7 +19,8 @@ export default function ShopApp() {
 
   useEffect(() => {
     fetchItems();
-    inputRef.current?.focus();
+    fetchOrders();
+    //inputRef.current?.focus();
   }, []);
 
   useEffect(() => {
@@ -37,6 +42,11 @@ export default function ShopApp() {
   const fetchOrders = async () => {
     try {
       const response = await fetch(API_BASE_URL + ORDER_URL);
+      if (!response.ok) {
+        const text = await response.text();
+        console.error("Server error:", text);
+        return;
+      }
       const data = await response.json();
       setOrders(data);
     } catch (error) {
@@ -45,7 +55,6 @@ export default function ShopApp() {
   };
 
   const addOrder = async (item_id) => {
-    if (input.trim()) {
       try {
         const response = await fetch(API_BASE_URL + ORDER_URL, {
           method: 'POST',
@@ -63,36 +72,11 @@ export default function ShopApp() {
           fetchOrders();
         }
       } catch (error) {
-        alert("Error saving a new todo.");
         alert(error);
       }
 
       setInput('');
       //inputRef.current?.focus(); // keep focus after adding
-    }
-  };
-
-  const toggleTodo = async (id) => {
-    const todoToToggle = todos.find(todo => todo.id === id);
-    if (todoToToggle !== undefined) {
-      try {
-        const response = await fetch(`${API_BASE_URL}/${id}`, {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            ...todoToToggle,
-            completed: !todoToToggle.completed,
-          }),
-        });
-        if (response.ok) {
-          //fetchTodos();
-        }
-      } catch (error) {
-        alert("Error toggleing a todo's completed status.");
-      }
-    }
   };
 
   const deleteOrder = async (id) => {
@@ -107,7 +91,7 @@ export default function ShopApp() {
             fetchOrders();
           }
         } catch (error) {
-          alert("Error deleting a todo.");
+          alert("Error deleting an order.");
         }
       }
     }
@@ -116,33 +100,6 @@ export default function ShopApp() {
   const startEdit = (todo) => {
     setEditingId(todo.id);
   };
-
-  // const saveEdit = async () => {
-  //   if (editText.trim()) {
-  //     const todoToEdit = todos.find(todo => todo.id === editingId);
-  //     if (todoToEdit !== undefined) {
-  //       try {
-  //         const response = await fetch(`${API_BASE_URL}/${editingId}`, {
-  //           method: 'PUT',
-  //           headers: {
-  //             'Content-Type': 'application/json',
-  //           },
-  //           body: JSON.stringify({
-  //             ...todoToEdit,
-  //             text: editText.trim(),
-  //           }),
-  //         });
-  //         if (response.ok) {
-  //           //fetchTodos();
-  //           cancelEdit();
-  //         }
-  //       } catch (error) {
-  //         alert("Error toggleing a todo's completed status.");
-  //         alert(error);
-  //       }
-  //     }
-  //   }
-  // };
 
   const cancelEdit = () => {
     setEditingId(null);
@@ -165,7 +122,7 @@ export default function ShopApp() {
             onChange={(e) => setInput(e.target.value)}
             //onKeyDown={(e) => e.key === 'Enter' && addTodo()} TODO: search functionality
             placeholder="What do you want to buy?"
-            className="todo-input"
+            className="search-input"
           />
         </div>
 
@@ -176,22 +133,24 @@ export default function ShopApp() {
               <p>No items found</p>
             </div>
           ) : (
-            <ul className="todo-items">
+            <ul className="shop-items">
               {items.map((item) => (
-                <li key={item.id} className="todo-item">
+                <li key={item.id} className="shop-item">
                   {/* the current todo is being edited */}
-                    /* The todo is not being edited */
                     <>
-                      <button
-                        onClick={() => addOrder(item.id)}
-                        className={`checkbox`}
-                      >
-                        Add to Cart
-                        {<ShoppingCart size={16} className="check-icon" />}
-                      </button>
                       <span className={`todo-text`}>
                         {item.name}
+
                       </span>
+
+                      <img className={"item-image"} src={"../images/" + item.image}></img>
+                      <button
+                          onClick={() => addOrder(item.id)}
+                          className={`checkbox`}
+                        >
+                          Add to Cart
+                          {/*<ShoppingCart size={16} className="check-icon" />*/}
+                        </button>
                     </>
                 </li>
               ))}
