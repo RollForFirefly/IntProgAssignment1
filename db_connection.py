@@ -26,12 +26,12 @@ with pymysql.connect(
         print("Record insert and committed.")
 
         create_catalogue_query = """
-        CREATE TABLE IF NOT EXISTS catalogue (
+        CREATE TABLE IF NOT EXISTS item (
         id INT AUTO_INCREMENT PRIMARY KEY,
         name VARCHAR(255) NOT NULL,
-        price DECIMAL(6, 2) NOT NULL,
+        price DECIMAL(8, 2) NOT NULL,
         description VARCHAR(255) NOT NULL,
-        image VARCHAR(255) NOT NULL
+        image VARCHAR(255)
         )
         """
         cursor.execute(create_catalogue_query)

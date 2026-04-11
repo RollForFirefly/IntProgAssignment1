@@ -1,18 +1,8 @@
 {
-  "name": "assignment1",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/RollForFirefly/Assignment1.git"
-  },
-  "private": true,
   "dependencies": {
-    "lucide-react": "^1.7.0",
-    "mysql": "^2.18.1"
+    "body-parser": "^2.2.2",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "mysql2": "^3.22.0"
   }
 }
