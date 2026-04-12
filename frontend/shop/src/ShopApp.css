@@ -42,7 +42,7 @@ body {
 
 .arrows {
   display: flex;
-  flex-direction: column; /* 🔥 stacks vertically */
+  flex-direction: column;
 }
 
 .arrows button {
