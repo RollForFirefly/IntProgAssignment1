@@ -137,7 +137,7 @@ body {
 .shop-items {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 🔥 3 items per row */
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   padding: 0;
 }
@@ -171,42 +171,6 @@ body {
   text-align: center;
 }
 
-.shop-item:hover {
-  background-color: #f9fafb;
-}
-
-.shop-item:last-child {
-  border-bottom: none;
-}
-
-/* Checkbox */
-.checkbox {
-  flex-shrink: 0;
-  width: 24px;
-  height: 24px;
-  border: 2px solid #d1d5db;
-  border-radius: 50%;
-  background: white;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s;
-}
-
-.checkbox:hover {
-  border-color: #667eea;
-}
-
-.checkbox-completed {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-color: #667eea;
-}
-
-.check-icon {
-  color: white;
-}
-
 .cart-button {
   font-size: xx-large;
   font-weight: bold;
@@ -225,113 +189,6 @@ body {
 
 .item-text {
   font-weight: 600;
-}
-
-.item-text.disabled {
-  opacity: 0.5;
-}
-
-/* Disabled State for Buttons */
-.checkbox:disabled,
-.edit-button:disabled,
-.delete-button:disabled {
-  cursor: not-allowed;
-  opacity: 0.4;
-  pointer-events: none;
-}
-
-/* Delete Button */
-.delete-button {
-  padding: 0.5rem;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  color: #9ca3af;
-  transition: color 0.2s;
-  border-radius: 6px;
-}
-
-.delete-button:hover {
-  color: #ef4444;
-  background: #fee2e2;
-}
-
-/* Edit Button */
-.edit-button {
-  padding: 0.5rem;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  color: #9ca3af;
-  transition: color 0.2s;
-  border-radius: 6px;
-}
-
-.edit-button:hover {
-  color: #667eea;
-  background: #eef2ff;
-}
-
-/* Edit Mode */
-.edit-mode {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-  flex: 1;
-}
-
-.edit-input {
-  flex: 1;
-  padding: 0.5rem 0.75rem;
-  border: 2px solid #667eea;
-  border-radius: 6px;
-  font-size: 1rem;
-}
-
-.edit-input:focus {
-  outline: none;
-  border-color: #764ba2;
-}
-
-.save-button {
-  padding: 0.5rem;
-  background: #10b981;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  transition: background 0.2s;
-}
-
-.save-button:hover {
-  background: #059669;
-}
-
-.cancel-button {
-  padding: 0.5rem;
-  background: #9ca3af;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  transition: background 0.2s;
-}
-
-.cancel-button:hover {
-  background: #6b7280;
-}
-
-/* Stats */
-.stats {
-  text-align: center;
-  margin-top: 1.5rem;
-  color: white;
-  font-size: 0.95rem;
-  opacity: 0.9;
 }
 
 /* Responsive */

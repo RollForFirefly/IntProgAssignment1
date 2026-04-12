@@ -19,12 +19,11 @@ export default function ShopApp() {
   item.name.toLowerCase().includes(input.toLowerCase())
 );
 
-  const inputRef = useRef(null); // To focus the main input after actions
+  const inputRef = useRef(null);
 
   useEffect(() => {
     fetchItems();
     fetchOrders();
-    //inputRef.current?.focus();
   }, []);
 
   useEffect(() => {
@@ -59,6 +58,12 @@ export default function ShopApp() {
   };
 
   const addOrder = async (item_id) => {
+    const existOrder = orders.find(order => order.item_id === item_id)
+    if (existOrder) {
+      updateOrder({ ...existOrder, amount: existOrder.amount + 1 })
+    }
+    else
+
       try {
         const response = await fetch(API_BASE_URL + ORDER_URL, {
           method: 'POST',
@@ -66,7 +71,7 @@ export default function ShopApp() {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            // use str type (instead of int) for id 
+            // use str type (instead of int) for id
             id: new Date(Date.now()).toISOString(),
             item_id: item_id,
             amount: 1,
@@ -89,16 +94,16 @@ const getItemFromOrder = (order) => {
 const updateOrder = async (order) => {
   try {
     const response = await fetch(
-      `${API_BASE_URL + ORDER_URL}/${order.id}`, // ✅ correct URL
+      `${API_BASE_URL + ORDER_URL}/${order.id}`,
       {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          id: order.id,          // ✅ keep same id
+          id: order.id,
           item_id: order.item_id,
-          amount: order.amount,  // or updated value
+          amount: order.amount,
         }),
       }
     );
@@ -201,7 +206,7 @@ const updateOrder = async (order) => {
                     <img
                       className="item-image"
                       src={"../images/" + item.image}
-                      alt={item.name}
+                      alt={item.name + "not found :("}
                     />
 
                     <button
@@ -215,11 +220,6 @@ const updateOrder = async (order) => {
             </ul>
           )}
         </div>
-        {items.length > 0 && (
-          <div className="stats">
-            <span>{items.length} available</span>
-          </div>
-        )}
       </div>
     </div>
   );
