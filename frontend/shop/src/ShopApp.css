@@ -30,6 +30,35 @@ body {
   color: black;
 }
 
+.order-amount-control {
+  display: grid;
+  grid-template-columns: 50px 50px 1fr 40px;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+
+
+.arrows {
+  display: flex;
+  flex-direction: column; /* 🔥 stacks vertically */
+}
+
+.arrows button {
+  width: 28px;
+  height: 18px;
+  padding: 0;
+  border: none;
+  background: #eee;
+  cursor: pointer;
+}
+
+.amount {
+  min-width: 20px;
+  text-align: center;
+}
+
 .header-title {
   font-size: 3rem;
   font-weight: bold;
@@ -63,8 +92,9 @@ body {
 }
 
 .item-image {
-  max-width: 50%;
-  height: auto;
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
 }
 
 .search-input:focus {
@@ -78,37 +108,7 @@ body {
   opacity: 0.6;
 }
 
-.add-button {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  padding: 0.875rem 1.5rem;
-  border: none;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.add-button:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-}
-
-.add-button:active:not(:disabled) {
-  transform: translateY(0);
-}
-
-.add-button:disabled {
-  cursor: not-allowed;
-  opacity: 0.5;
-  background: #9ca3af;
-}
-
-/* Todo List */
-.todo-list {
+.item-list {
   background: white;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
@@ -126,30 +126,56 @@ body {
   margin-bottom: 1rem;
 }
 
+.order-popup {
+  padding-top: 225px;
+}
+
 .empty-state p {
   font-size: 1.125rem;
 }
 
 .shop-items {
   list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 🔥 3 items per row */
+  gap: 20px;
+  padding: 0;
+}
+
+.order-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+
+}
+
+.order-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0;
 }
 
 .shop-item {
-  justify-content: space-between;
-  padding: 1.25rem;
-  border-bottom: 1px solid #f3f4f6;
-  display: inline-block;
-  align-items: center;
-  gap: 1rem;
-  transition: background-color 0.2s;
-  width: 33%;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
 }
 
-.todo-item:hover {
+.item-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.shop-item:hover {
   background-color: #f9fafb;
 }
 
-.todo-item:last-child {
+.shop-item:last-child {
   border-bottom: none;
 }
 
@@ -181,19 +207,27 @@ body {
   color: white;
 }
 
-/* Todo Text */
-.todo-text {
-  flex: 1;
-  color: #1f2937;
-  font-size: 1.05rem;
+.cart-button {
+  font-size: xx-large;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  color: darkgreen;
+  padding: 7px;
+  border-radius: 6px;
+  border: none;
 }
 
-.todo-completed {
-  text-decoration: line-through;
-  color: #9ca3af;
+.cart-button span {
+  padding-left: 12px;
 }
 
-.todo-text.disabled {
+.item-text {
+  font-weight: 600;
+}
+
+.item-text.disabled {
   opacity: 0.5;
 }
 

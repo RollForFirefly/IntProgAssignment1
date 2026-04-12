@@ -36,7 +36,7 @@ def create_catalogue():
     Chair = Item(name="Chair", price=5.99, description="A chair. Wooden. Looks uncomfortable", image="chair.jpg")
     Towel = Item(name="Towel", price=13.49, description="A cotton towel. Wait are towels made of cotton?", image="towel.jpg")
     Beans = Item(name="Refried Beans", price=7.99, description="A can of refried beans. Great for protein and fibre.", image="beans.jpg")
-    Tape = Item(name="Scary Tape", price=6.66, description="It's haunted...", image="NO TAPE")
+    Tape = Item(name="Scary Tape", price=6.66, description="It's haunted...", image="tape.jpg")
     Die = Item(name="Twenty-sided Die", price=20.00, description="Also known as a D20. Seems to almost never roll a 20.", image="die.jpg")
     Guillotine = Item(name="Guillotine", price=0.00, description="The revolution is upon us. Buy me. I hunger for the rich.", image="revolution.jpg")
     Ryan = Item(name="Ryan Gosling", price=99.99, description="Are you buying a man or a standee? Yes.", image="ryan.jpg")

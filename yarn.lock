@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@mobiscroll/react@npm:@mobiscroll/react-legacy-trial@6.0.1":
+  version "6.0.1"
+  resolved "https://npm.mobiscroll.com/@mobiscroll%2freact-legacy-trial/-/react-legacy-trial-6.0.1.tgz#ebf899afd89d21911b7582534b129fe5496f2ed6"
+  integrity sha512-Fc/VP3SiBd2H4ZVoL6gca0E8RLirqUjelkoO4VDshMNYTEYgo0VLOW3VSKnWPWmqDJriiMZTpxIUFkBYy87xrA==
+
 accepts@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/accepts/-/accepts-2.0.0.tgz#bbcf4ba5075467f3f2131eab3cffc73c2f5d7895"
