@@ -4,9 +4,9 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from sqlmodel import Session
 
-from to_do_app_crud import create_catalogue
-from to_do_app_crud import create_db_and_tables
-from to_do_app_crud import (
+from shop_app_crud import create_catalogue
+from shop_app_crud import create_db_and_tables
+from shop_app_crud import (
     get_session,
     Item,
     db_get_items,

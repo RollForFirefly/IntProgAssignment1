@@ -6,7 +6,7 @@ import './ShopApp.css';
 const API_BASE_URL = 'http://localhost:8000/items';
 const ORDER_URL = '/orders';
 // note for me:
-// to boot up fastAPI, go to ./backend:   python -m uvicorn to_do_app:app --reload
+// to boot up fastAPI, go to ./backend:   python -m uvicorn shop_app:app --reload
 // make sure you're using venv:                         .venv\Scripts\Activate.ps1
 // and finally, boot react from ./src:                   node --run dev
 
