@@ -8,7 +8,7 @@ const ORDER_URL = '/orders';
 // note for me:
 // to boot up fastAPI, go to ./backend:   python -m uvicorn shop_app:app --reload
 // make sure you're using venv:                         .venv\Scripts\Activate.ps1
-// and finally, boot react from ./src:                   node --run dev
+// and finally, boot react from frontend/shop:                   npm run dev
 
 export default function ShopApp() {
   const [items, setItems] = useState([]);
