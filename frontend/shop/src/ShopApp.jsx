@@ -6,9 +6,10 @@ import './ShopApp.css';
 const API_BASE_URL = 'http://localhost:8000/items';
 const ORDER_URL = '/orders';
 // note for me:
-// to boot up fastAPI, go to ./backend:   python -m uvicorn shop_app:app --reload
+// to boot up fastAPI, go to ./backend:                 python -m uvicorn shop_app:app --reload
 // make sure you're using venv:                         .venv\Scripts\Activate.ps1
-// and finally, boot react from frontend/shop:                   npm run dev
+// if venv not installed, type:                         python -m venv venv
+// and finally, boot react from frontend/shop:          npm run dev
 
 export default function ShopApp() {
   const [items, setItems] = useState([]);
@@ -145,7 +146,7 @@ const updateOrder = async (order) => {
         <div className="input-section">
           <input
             type="text"
-            ref={inputRef} // attaching the ref here
+            ref={inputRef} // using useRef
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="What do you want to buy?"
